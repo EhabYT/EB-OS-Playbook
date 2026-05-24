@@ -1,0 +1,12 @@
+# Build output
+*.apbx
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Editor
+.vs/
+*.suo
+*.user
+*.sln.docstates

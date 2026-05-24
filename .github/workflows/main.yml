@@ -1,0 +1,59 @@
+name: Archive and Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: 'main'
+
+      - name: Set version
+        id: set_version
+        run: |
+          CURRENT_DATE=$(date +%y.%m)
+          echo "VERSION=${CURRENT_DATE}" >> $GITHUB_ENV
+        shell: bash
+
+      - name: Update version
+        run: |
+          $version = "${{ env.VERSION }}"
+          $playbookConfPath = "src\playbook.conf"
+          $finalizeCMDPath = "src\Executables\FINALIZE.cmd"
+
+          (Get-Content -Path $playbookConfPath) -replace '<Version>.*</Version>', "<Version>$version</Version>" | Set-Content -Path $playbookConfPath
+
+          (Get-Content -Path $finalizeCMDPath) -replace 'set version=.+', "set version=$version" | Set-Content -Path $finalizeCMDPath
+        shell: pwsh
+
+      - name: Archive content
+        run: |
+          7z a -pmalte -mhe=on "EB-PB-${{ env.VERSION }}.apbx" ./src/*
+
+      - name: Generate SHA256
+        run: |
+          $hash = (Get-FileHash -Algorithm SHA256 -Path "EB-PB-${{ env.VERSION }}.apbx").Hash
+          echo ("HASH=" + $hash) >> $env:GITHUB_ENV
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          files: "EB-PB-${{ env.VERSION }}.apbx"
+          name: ${{ env.VERSION }}
+          tag_name: ${{ env.VERSION }}
+          fail_on_unmatched_files: true
+          prerelease: false
+          body: |
+            # Download Link ✨
+
+            If you would like to support Revision, kindly download the Playbook from the provided link below.
+
+            📌Link: 
+
+            SHA256: `${{ env.HASH }}`

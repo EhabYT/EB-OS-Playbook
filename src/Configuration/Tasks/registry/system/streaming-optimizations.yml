@@ -1,0 +1,38 @@
+---
+title: Streaming Optimizations
+description: Network, audio, and system optimizations for gaming and streaming
+privilege: TrustedInstaller
+actions:
+
+  # === Disable Nagle's Algorithm for lower latency
+  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces', value: 'TCPNoDelay', type: REG_DWORD, data: '1'}
+
+  # === TcpAckFrequency - 1 (reduces network latency)
+  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces', value: 'TcpAckFrequency', type: REG_DWORD, data: '1'}
+
+  # === Disable Nagle's Algorithm globally
+  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters', value: 'TCPNoDelay', type: REG_DWORD, data: '1'}
+
+  # === Multimedia Class Scheduler - Gaming/Streaming priority
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games', value: 'GPU Priority', type: REG_DWORD, data: '8'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games', value: 'Priority', type: REG_DWORD, data: '6'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games', value: 'Scheduling Category', type: REG_SZ, data: 'High'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games', value: 'SFIO Priority', type: REG_SZ, data: 'High'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games', value: 'Background Only', type: REG_SZ, data: 'false'}
+
+  # === Audio streaming quality - Professional
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Audio', value: 'DisableProtectedAudio', type: REG_DWORD, data: '1'}
+
+  # === Disable Windows Game Bar tips and notifications
+  - !registryValue: {path: 'HKCU\Software\Microsoft\GameBar', value: 'UseNexusForGameBar', type: REG_DWORD, data: '0'}
+
+  # === Disable Mouse Pointer Acceleration for gaming precision
+  - !registryValue: {path: 'HKCU\Control Panel\Mouse', value: 'MouseSpeed', type: REG_SZ, data: '0'}
+  - !registryValue: {path: 'HKCU\Control Panel\Mouse', value: 'MouseThreshold1', type: REG_SZ, data: '0'}
+  - !registryValue: {path: 'HKCU\Control Panel\Mouse', value: 'MouseThreshold2', type: REG_SZ, data: '0'}
+
+  # === Disable Fullscreen Optimizations notification
+  - !registryValue: {path: 'HKCU\System\GameConfigStore', value: 'GameDVR_DXGIHonorFSEWindowsCompatible', type: REG_DWORD, data: '1'}
+
+  # === Background apps - Disable for streaming performance
+  - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications', value: 'GlobalUserDisabled', type: REG_DWORD, data: '1'}
