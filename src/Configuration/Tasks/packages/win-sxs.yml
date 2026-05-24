@@ -47,7 +47,7 @@ actions:
         if (-not $found) {
           try {
             $url = 'https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx';
-            $out = "$env:TEMP\VCLibs.appx";
+            $out = Join-Path $env:TEMP 'VCLibs.appx';
             Invoke-WebRequest -Uri $url -OutFile $out -UseBasicParsing;
             Add-AppxProvisionedPackage -Online -PackagePath $out -SkipLicense;
             Remove-Item $out -Force;
