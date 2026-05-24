@@ -90,7 +90,7 @@ actions:
   # OneDrive workaround
   - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows\OneDrive', value: 'DisableFileSyncNGSC', operation: delete}
 
-  # EB OS manually disables all the things that RestrictCommunication does (except DisableRootAutoUpdate and AllowWindowsEntitlementReactivation, DisableWindowsUpdateAccess)
+  # EBOS manually disables all the things that RestrictCommunication does (except DisableRootAutoUpdate and AllowWindowsEntitlementReactivation, DisableWindowsUpdateAccess)
   - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\InternetManagement', value: 'RestrictCommunication', operation: delete}
   - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\InternetManagement', value: 'RestrictCommunication', operation: delete}
 

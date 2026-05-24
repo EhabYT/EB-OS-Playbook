@@ -18,7 +18,7 @@ EB Playbook📜
 
 </div>
 
-EB OS is a gaming and streaming-optimized version of Windows, designed to be lightweight, stable, and focused on improving performance, privacy and compatibility. Now compatible with [AME Wizard](https://amelabs.net)🧙.
+EBOS is a gaming and streaming-optimized version of Windows, designed to be lightweight, stable, and focused on improving performance, privacy and compatibility. Now compatible with [AME Wizard](https://amelabs.net)🧙.
 
 ## ✨ Key Features
 
