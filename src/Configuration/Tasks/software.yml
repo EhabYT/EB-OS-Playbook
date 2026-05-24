@@ -52,21 +52,31 @@ actions:
 
   # Firefox
   - !status: {status: 'Installing Firefox', option: "browser-firefox"}
-  - !software:
-    name: "Firefox"
-    source: chocolatey
+  - !download:
     option: "browser-firefox"
-    package: 'firefox'
+    url: 'https://download.mozilla.org/?product=firefox-latest&os=win64&lang=en-US'
+    destination: "FirefoxSetup.exe"
+    cpuArch: X64
+  - !run:
+    exeDir: true
+    exe: "FirefoxSetup.exe"
+    args: "/S"
     weight: 150
+    option: "browser-firefox"
 
   # OBS Studio
   - !status: {status: 'Installing OBS Studio', option: "streaming-obs"}
-  - !software:
-    name: "OBS Studio"
-    source: chocolatey
+  - !download:
     option: "streaming-obs"
-    package: 'obs-studio'
+    url: 'https://cdn.obsproject.com/downloads/OBS-Studio-Full-Installer-x64.exe'
+    destination: "OBS-Studio-Setup.exe"
+    cpuArch: X64
+  - !run:
+    exeDir: true
+    exe: "OBS-Studio-Setup.exe"
+    args: "/S"
     weight: 150
+    option: "streaming-obs"
 
   # StreamElements GroundControl
   - !status: {status: 'Installing StreamElements GroundControl', option: "streaming-groundcontrol"}
@@ -84,18 +94,28 @@ actions:
 
   # Discord
   - !status: {status: 'Installing Discord', option: "streaming-discord"}
-  - !software:
-    name: "Discord"
-    source: chocolatey
+  - !download:
     option: "streaming-discord"
-    package: 'discord'
+    url: 'https://discord.com/api/download?platform=win'
+    destination: "DiscordSetup.exe"
+    cpuArch: X64
+  - !run:
+    exeDir: true
+    exe: "DiscordSetup.exe"
+    args: "/s"
     weight: 150
+    option: "streaming-discord"
 
   # Voicemeeter Banana
   - !status: {status: 'Installing Voicemeeter Banana', option: "streaming-voicemeeter"}
-  - !software:
-    name: "Voicemeeter Banana"
-    source: chocolatey
+  - !download:
     option: "streaming-voicemeeter"
-    package: 'voicemeeter-banana'
+    url: 'https://vb-audio.com/Voicemeeter/VoicemeeterBanana_Setup.exe'
+    destination: "VoicemeeterBananaSetup.exe"
+    cpuArch: X64
+  - !run:
+    exeDir: true
+    exe: "VoicemeeterBananaSetup.exe"
+    args: "/S"
     weight: 150
+    option: "streaming-voicemeeter"
