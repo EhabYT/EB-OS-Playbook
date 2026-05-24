@@ -85,12 +85,15 @@ actions:
     url: 'https://groundcontrol.streamelements.com/download/windows'
     destination: "GroundControl-Setup.exe"
     overwrite: true
+    ignoreErrors: true
   - !run:
     exeDir: true
     exe: "GroundControl-Setup.exe"
     args: "/S"
+    runas: currentUser
     weight: 150
     option: "streaming-groundcontrol"
+    ignoreErrors: true
 
   # Discord
   - !status: {status: 'Installing Discord', option: "streaming-discord"}
@@ -103,6 +106,7 @@ actions:
     exeDir: true
     exe: "DiscordSetup.exe"
     args: "/s"
+    runas: currentUser
     weight: 150
     option: "streaming-discord"
 
