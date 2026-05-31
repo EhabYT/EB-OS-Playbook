@@ -1,6 +1,8 @@
 *.zip
 *.tar
 temp.tar
+*.apbx
 *.apbx.backup*
 *.backup
+desktop.ini
 images/
