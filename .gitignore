@@ -1,12 +1,6 @@
-# Build output
-*.apbx
-
-# Windows
-Thumbs.db
-Desktop.ini
-
-# Editor
-.vs/
-*.suo
-*.user
-*.sln.docstates
+*.zip
+*.tar
+temp.tar
+*.apbx.backup*
+*.backup
+images/

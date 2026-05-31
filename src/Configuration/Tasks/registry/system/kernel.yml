@@ -6,7 +6,7 @@ actions:
 
   # === Enable TSX
   # ------> By default it's disabled due to security reasons; Enabling it makes 4~5 times faster in database transaction and around 40% faster in specific workloads
-  # https://github.com/meetrevision/playbook/issues/100
+  # https://github.com/EhabYT/EB-OS-Playbook/issues/100
   - !run:
     path: "%ProgramFiles%\\EB Tool"
     exe: "eb-tool.exe"
