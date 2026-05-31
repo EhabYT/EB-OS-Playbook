@@ -6,8 +6,8 @@ actions:
 
   # === Hide stripped components from Settings
   - !run:
-    path: "%ProgramFiles%\\Revision Tool"
-    exe: "revitool.exe"
+    path: "%ProgramFiles%\\EB Tool"
+    exe: "eb-tool.exe"
     args: 'registry hide-page --value "cortana,privacy-feedback,windowsinsider,home"'
     wait: true
     runas: currentUserElevated
@@ -183,8 +183,8 @@ actions:
 
   # === Resume - Off
   - !run:
-    path: "%ProgramFiles%\\Revision Tool"
-    exe: "revitool.exe"
+    path: "%ProgramFiles%\\EB Tool"
+    exe: "eb-tool.exe"
     args: 'registry hide-page --value "crossdevice"'
     wait: true
     runas: currentUserElevated
@@ -301,8 +301,8 @@ actions:
 
   # === Inking & typing personalization
   - !run:
-    path: "%ProgramFiles%\\Revision Tool"
-    exe: "revitool.exe"
+    path: "%ProgramFiles%\\EB Tool"
+    exe: "eb-tool.exe"
     args: "tweaks personalization input-personalization disable"
     wait: true
     runas: currentUserElevated

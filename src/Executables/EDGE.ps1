@@ -65,7 +65,7 @@ function Uninstall-Process {
 
     try {    
         Copy-Item -Path "$env:SystemRoot\System32\cmd.exe" -Destination $spoofPath -Force
-        Write-Host "[$Mode] Created spoofed process at: $spoofPath"
+        Write-Host "[$Mode] Created spsoofed process at: $spoofPath"
 
         $cmdArgs = "/c `"$uninstallString`" $uninstallArguments"
 

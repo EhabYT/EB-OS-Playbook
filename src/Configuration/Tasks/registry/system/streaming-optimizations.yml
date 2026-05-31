@@ -4,11 +4,17 @@ description: Network, audio, and system optimizations for gaming and streaming
 privilege: TrustedInstaller
 actions:
 
-  # === Disable Nagle's Algorithm for lower latency
-  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces', value: 'TCPNoDelay', type: REG_DWORD, data: '1'}
-
-  # === TcpAckFrequency - 1 (reduces network latency)
-  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces', value: 'TcpAckFrequency', type: REG_DWORD, data: '1'}
+  # === Disable Nagle's Algorithm & TcpAckFrequency per interface
+  - !powerShell:
+    wait: true
+    errorAction: Ignore
+    command: >-
+      $interfaces = 'HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces';
+      Get-ChildItem $interfaces | ForEach-Object {
+        $p = $_.PSPath;
+        New-ItemProperty -Path $p -Name 'TCPNoDelay' -Value 1 -PropertyType DWord -Force | Out-Null;
+        New-ItemProperty -Path $p -Name 'TcpAckFrequency' -Value 1 -PropertyType DWord -Force | Out-Null;
+      }
 
   # === Disable Nagle's Algorithm globally
   - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters', value: 'TCPNoDelay', type: REG_DWORD, data: '1'}

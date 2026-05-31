@@ -30,7 +30,7 @@ actions:
         'Microsoft.Edge.GameAssist'
       )
   
-  # In case Revision Tool's removal method fails
+  # In case EB Tool's removal method fails
   - !powerShell:
     option: 'remove-winsxs-ai'
     exeDir: true

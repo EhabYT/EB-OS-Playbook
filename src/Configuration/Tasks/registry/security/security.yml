@@ -23,14 +23,6 @@ actions:
 
   # === Allow security intelligence updates when running on battery power - Disabled
   - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows Defender\Signature Updates', value: 'DisableScheduledSignatureUpdateOnBattery', type: REG_DWORD, data: '1'}
-
-  # =============================================
-  # === Windows Defender Antivirus - SpyNet ===
-  # =============================================
-
-  # === Configure sample submission consent - Never send
-  # ------> Prevents the Defender sample submission nag notification
-  - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows Defender\SpyNet', value: 'SubmitSamplesConsent', type: REG_DWORD, data: '2'}
   
 
   # ====================================

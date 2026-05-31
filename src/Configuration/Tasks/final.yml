@@ -1,19 +1,19 @@
 ---
 title: Configuration
-description: Applies some Revision configurations
+description: Applies some EB configurations
 privilege: TrustedInstaller
 actions:
 
   - !writeStatus: {status: "Optimizing NTFS"}
   - !run:
-    path: "%ProgramFiles%\\Revision Tool"
-    exe: "revitool.exe"
+    path: "%ProgramFiles%\\EB Tool"
+    exe: "eb-tool.exe"
     args: "tweaks performance ntfs-last-access disable"
     wait: true
     runas: currentUserElevated
   - !run:
-    path: "%ProgramFiles%\\Revision Tool"
-    exe: "revitool.exe"
+    path: "%ProgramFiles%\\EB Tool"
+    exe: "eb-tool.exe"
     args: "tweaks performance ntfs-8dot3-naming disable"
     wait: true
     runas: currentUserElevated
@@ -47,8 +47,8 @@ actions:
 
   # Alternative way to group services without breaking services like XboxGipSvc
   - !run:
-    path: "%ProgramFiles%\\Revision Tool"
-    exe: "revitool.exe"
+    path: "%ProgramFiles%\\EB Tool"
+    exe: "eb-tool.exe"
     args: "tweaks performance service-grouping set recommended"
     wait: true
     runas: currentUserElevated
@@ -147,10 +147,10 @@ actions:
   - !run: 
     exe: "gpupdate.exe"
 
-  # Apply micro patches via Revision Tool in order to avoid new playbook releases for minor changes
+  # Apply micro patches via EB Tool in order to avoid new playbook releases for minor changes
   - !run:
-    path: "%ProgramFiles%\\Revision Tool"
-    exe: "revitool.exe"
+    path: "%ProgramFiles%\\EB Tool"
+    exe: "eb-tool.exe"
     args: "tweaks patches"
     wait: true
     runas: currentUserElevated

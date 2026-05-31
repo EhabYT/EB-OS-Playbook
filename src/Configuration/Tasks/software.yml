@@ -52,74 +52,9 @@ actions:
 
   # Firefox
   - !status: {status: 'Installing Firefox', option: "browser-firefox"}
-  - !download:
+  - !software:
+    name: "Firefox"
+    source: chocolatey
     option: "browser-firefox"
-    url: 'https://download.mozilla.org/?product=firefox-latest&os=win64&lang=en-US'
-    destination: "FirefoxSetup.exe"
-    cpuArch: X64
-  - !run:
-    exeDir: true
-    exe: "FirefoxSetup.exe"
-    args: "/S"
+    package: 'firefox'
     weight: 150
-    option: "browser-firefox"
-
-  # OBS Studio
-  - !status: {status: 'Installing OBS Studio', option: "streaming-obs"}
-  - !download:
-    option: "streaming-obs"
-    url: 'https://cdn.obsproject.com/downloads/OBS-Studio-Full-Installer-x64.exe'
-    destination: "OBS-Studio-Setup.exe"
-    cpuArch: X64
-  - !run:
-    exeDir: true
-    exe: "OBS-Studio-Setup.exe"
-    args: "/S"
-    weight: 150
-    option: "streaming-obs"
-
-  # StreamElements GroundControl
-  - !status: {status: 'Installing StreamElements GroundControl', option: "streaming-groundcontrol"}
-  - !download:
-    option: "streaming-groundcontrol"
-    url: 'https://groundcontrol.streamelements.com/download/windows'
-    destination: "GroundControl-Setup.exe"
-    overwrite: true
-    ignoreErrors: true
-  - !run:
-    exeDir: true
-    exe: "GroundControl-Setup.exe"
-    args: "/S"
-    runas: currentUser
-    weight: 150
-    option: "streaming-groundcontrol"
-    ignoreErrors: true
-
-  # Discord
-  - !status: {status: 'Installing Discord', option: "streaming-discord"}
-  - !download:
-    option: "streaming-discord"
-    url: 'https://discord.com/api/download?platform=win'
-    destination: "DiscordSetup.exe"
-    cpuArch: X64
-  - !run:
-    exeDir: true
-    exe: "DiscordSetup.exe"
-    args: "/s"
-    runas: currentUser
-    weight: 150
-    option: "streaming-discord"
-
-  # Voicemeeter Banana
-  - !status: {status: 'Installing Voicemeeter Banana', option: "streaming-voicemeeter"}
-  - !download:
-    option: "streaming-voicemeeter"
-    url: 'https://vb-audio.com/Voicemeeter/VoicemeeterBanana_Setup.exe'
-    destination: "VoicemeeterBananaSetup.exe"
-    cpuArch: X64
-  - !run:
-    exeDir: true
-    exe: "VoicemeeterBananaSetup.exe"
-    args: "/S"
-    weight: 150
-    option: "streaming-voicemeeter"

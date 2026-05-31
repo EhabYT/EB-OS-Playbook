@@ -76,7 +76,7 @@ body:
     id: search-before-submit
     attributes:
       label: Have you searched for similar issues?
-      description: Make sure to look up for similar issues before submitting a new one and the [documentation](https://revi.cc/docs) on the Revision website
+      description: Make sure to look up for similar issues before submitting a new one and the [documentation](https://ebos.cc/docs) on the EB website
       options:
       - label: I have searched for similar issues and found none.
         required: true

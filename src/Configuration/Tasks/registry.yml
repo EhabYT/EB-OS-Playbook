@@ -47,7 +47,6 @@ actions:
   - !task: {path: 'Tasks\registry\system\kernel.yml'}
   - !task: {path: 'Tasks\registry\system\logon.yml'}
   - !task: {path: 'Tasks\registry\system\multimedia.yml'}
-  - !task: {path: 'Tasks\registry\system\streaming-optimizations.yml'}
   - !task: {path: 'Tasks\registry\system\oobe.yml'}
   - !task: {path: 'Tasks\registry\system\power.yml'}
   - !task: {path: 'Tasks\registry\system\win32ps.yml'}
