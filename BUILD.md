@@ -10,7 +10,7 @@ The EB Playbook is distributed as a password-protected 7z archive (`.apbx`) that
 
 | Tool | Required for | Notes |
 |------|-------------|-------|
-| [7-Zip](https://7-zip.org/) (`7z.exe`) | Creating `.apbx` archive | Path may vary; default: `C:\Program Files\7-Zip\7z.exe` |
+| [7-Zip](https://7-zip.org/) (`7z.exe`) | Creating `.apbx` archive | Path may vary; default: `C:\Program Files\NVIDIA Corporation\NVIDIA App\7z.exe` |
 | PowerShell 5.1+ | Running build script | Ships with Windows |
 | [Flutter SDK](https://flutter.dev) ^3.11.0 | Rebuilding EB Tool | Only needed when changing EB Tool source |
 | [Dart SDK](https://dart.dev) ^3.11.0 | Rebuilding EB Tool CLI | Included with Flutter |
@@ -149,6 +149,20 @@ To trigger: Go to Actions → "Archive and Release" → Run workflow.
 
 ---
 
+## Changelog
+
+### 2026-06-01
+
+- **Rebrand**: All references to Revi/ReviOS/Revision/MeetRevision → EB/EBOS/EhabYT
+- **EB-tool build fixed**: Removed duplicated `_validate()` tail code in `win_registry_service.dart`
+- **EB-tool improvements**: `isSupported` accepts EBOS/EB; `isAmePlaybook` path → `EB-EBOS`; package names → `EB-*`; API endpoint → `EhabYT/EB-OS-Playbook`
+- **Playbook cleanup**: Removed redundant `00-edition-sub.yml`; removed broken `!download:` URL for EB-tool; embedded `eb-tool-Setup.exe` locally with `exeDir: true`
+- **`optional-features.yml`**: Now included in `main.yml` (was orphaned)
+- **`playbook.conf` fixes**: `Enhaned Privacy` → `Enhanced Privacy`; removed stray `s` after `</Text>`
+- **New SHA256**: `B40FA6FD4AD8825B70303BA67DE37CB78EA7193C5AEDCEB5A6A5A4D13E3ED083`
+
+---
+
 ## Versioning
 
 | Artifact | Scheme | Example |
@@ -173,6 +187,12 @@ Get-FileHash "EBOS-PB-1.0.0.apbx" -Algorithm SHA256
 ```
 
 Expected output:
-- **90+ files**, 18 folders
+- **90 files**, 18 folders
 - Password-protected with header encryption
 - Contents include `playbook.conf`, `Configuration/`, `Executables/`, `Images/`
+
+### Latest build
+
+| Date | File | Size | SHA256 |
+|------|------|------|--------|
+| 2026-06-01 | `EBOS-PB-1.0.0.apbx` | 24,864,321 bytes | `B40FA6FD4AD8825B70303BA67DE37CB78EA7193C5AEDCEB5A6A5A4D13E3ED083` |
